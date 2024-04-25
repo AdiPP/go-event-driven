@@ -49,6 +49,10 @@ func (o *OrderEntity) Pay(value float64) error {
 	return nil
 }
 
+func (o *OrderEntity) GetItems() []*OrderItemEntity {
+	return o.items
+}
+
 func (o *OrderEntity) GetTotalPrice() float64 {
 	return o.totalPrice
 }

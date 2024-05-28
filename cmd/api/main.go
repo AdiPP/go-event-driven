@@ -11,8 +11,18 @@ import (
 
 func main() {
 	queueAdapter := queue.NewMemoryQueueAdapter()
+	
 	createOrderUseCase := usecase.NewCreateOrderUseCase(queueAdapter)
-	orderController := controller.NewOrderController(createOrderUseCase)
+	processOrderPaymentUseCase := usecase.NewProcessOrderPaymentUseCase(queueAdapter)
+	stockMovementUseCase := usecase.NewStockMovementUseCase()
+	sendOrderEmailUseCase := usecase.NewSendOrderEmailUseCase()
+	
+	orderController := controller.NewOrderController(
+		createOrderUseCase,
+		processOrderPaymentUseCase,
+		stockMovementUseCase,
+		sendOrderEmailUseCase,
+	)
 
 	http.HandleFunc("POST /create-order", orderController.CreateOrder)
 

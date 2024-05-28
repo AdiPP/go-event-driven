@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/AdiPP/go-event-driven/internal/application/controller"
-	"github.com/AdiPP/go-event-driven/internal/infra/queue"
-	"github.com/AdiPP/go-event-driven/internal/usecase"
 	"net/http"
+
+	"github.com/AdiPP/go-event-driven/internal/application/controller"
+	"github.com/AdiPP/go-event-driven/internal/application/usecase"
+	"github.com/AdiPP/go-event-driven/internal/infra/queue"
 )
 
 func main() {

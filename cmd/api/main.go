@@ -17,7 +17,7 @@ func main() {
 	ctx := context.Background()
 
 	// initialize queue
-	queueAdapter := queue.NewMemoryQueueAdapter()
+	queueAdapter := queue.NewRabbitMQAdapter("amqp://guest:guest@localhost:5672/")
 	
 	// use cases
 	createOrderUseCase := usecase.NewCreateOrderUseCase(queueAdapter)
@@ -58,6 +58,8 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error connect queue %s", err)
 	}
+
+	defer queueAdapter.Dissconect(ctx)
 
 	// start consuming queues
 	orderCreatedEvent := reflect.TypeOf(event.OrderCreatedEvent{}).Name()

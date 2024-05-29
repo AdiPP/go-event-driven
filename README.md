@@ -81,12 +81,15 @@ curl -X POST http://localhost:8080/create-order -H "Accept: application/json" -H
 ## Sample Screenshots
 
 ### API Request
+
 ![API Request](./resources/api_requests.png)
 
 ### RabbitMQ Management
+
 ![RabbitMQ Management](./resources/rabbitmq_management.png)
 
 ### Console Output
+
 ![Console Output](./resources/console_output.png)
 
 ## Contributing
